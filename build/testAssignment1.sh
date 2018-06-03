@@ -7,7 +7,7 @@
 #Exit Value: Number of errors found, 0 if the file was correct
 
 errors=0
-sleep 2
+sleep 200
 username=$(curl -s -H "Authorization: token ${TOKEN}" -X GET "https://api.github.com/repos/${SEMAPHORE_REPO_SLUG}/pulls/${PULL_REQUEST_NUMBER}" | jq -r '.user.login')
 
 if [ ! -f "$username.csv" ]; then
