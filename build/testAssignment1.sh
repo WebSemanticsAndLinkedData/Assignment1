@@ -15,7 +15,7 @@ if [ ! -f "$username.csv" ]; then
   errors=$((errors+1))
 else
 	file=$username.csv
-	numberfields=2
+	numberfields=3
 	awk -v n=$numberfields 'BEGIN{FS=OFS=","} NF==n{count++} NF!=n{print "ERROR in file " FILENAME " line "   count+1 " Incorrect number of fields"; errors++; count++} END {if ( errors != 0  ) {exit 1}}' $file >&2
 	if [[ $? -ne 0 ]]
 	then
