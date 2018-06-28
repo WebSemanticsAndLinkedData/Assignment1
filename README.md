@@ -6,4 +6,4 @@ This file will be used to identify your uploads so its **VERY** important to mak
 
 ### Tests:
 * The csv file exists and it is named correctly
-* The csv file has two fields
+* The csv file has three fields
