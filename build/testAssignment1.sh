@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Name: testCSV.sh
-#Description: Validates student csv file
+#Description: Validates student csv file and HandsOn csv file
 #Parameters: none
 #Output: Descriptions of lines with incorrect number of fields, or none if the files are correct
 #Exit Value: Number of errors found, 0 if the file was correct
@@ -21,6 +21,14 @@ else
 	then
 		errors=$((errors+1))
 	fi
+fi
+
+file=HandsOn.csv
+numberfields=2
+awk -v n=$numberfields 'BEGIN{FS=OFS=","} NF==n{count++} NF!=n{print "ERROR in file " FILENAME " line "   count+1 " Incorrect number of fields"; errors++; count++} END {if ( errors != 0  ) {exit 1}}' $file >&2
+if [[ $? -ne 0 ]]
+then
+	errors=$((errors+1))
 fi
 
 exit $errors
